@@ -6,15 +6,15 @@ on:
     branches:
       - main
       - master
-  pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
   build:
     name: Build Debug APK, Release APK, and Release AAB
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ScanMATE-AI-V3-polished-main
 
     steps:
       - name: Checkout project
@@ -45,16 +45,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: ScanMATE-AI-V3-polished-main/app/build/outputs/apk/debug/*.apk
 
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: app/build/outputs/apk/release/*.apk
+          path: ScanMATE-AI-V3-polished-main/app/build/outputs/apk/release/*.apk
 
       - name: Upload Release AAB
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
-          path: app/build/outputs/bundle/release/*.aab
+          path: ScanMATE-AI-V3-polished-main/app/build/outputs/bundle/release/*.aab
